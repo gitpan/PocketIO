@@ -1,0 +1,35 @@
+---
+abstract: 'Socket.IO Plack app'
+author:
+  - 'Viacheslav Tykhanovskyi <vti@cpan.org>'
+build_requires:
+  ExtUtils::MakeMaker: 6.42
+configure_requires:
+  ExtUtils::MakeMaker: 6.42
+distribution_type: module
+generated_by: 'Module::Install version 1.01'
+license: artistic_2
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.4.html
+  version: 1.4
+name: PocketIO
+no_index:
+  directory:
+    - examples
+    - inc
+    - t
+    - xt
+requires:
+  AnyEvent: 0
+  JSON: 0
+  Plack: 0
+  Protocol::WebSocket: 0.009003
+  Scalar::Util: 0
+  Try::Tiny: 0
+  Twiggy: 0
+  perl: 5.8.7
+resources:
+  bugtracker: http://github.com/vti/pocketio/issues
+  license: http://dev.perl.org/licenses/
+  repository: http://github.com/vti/pocketio/
+version: 0.00905
