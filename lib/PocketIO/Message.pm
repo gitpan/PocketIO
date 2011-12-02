@@ -5,6 +5,7 @@ use warnings;
 
 use JSON ();
 use Encode ();
+use Try::Tiny;
 
 use overload '""' => sub { $_[0]->to_bytes }, fallback => 1;
 
@@ -47,14 +48,20 @@ sub parse {
 
     return unless defined $string && $string ne '';
 
+    return unless $string =~ m/:/;
+
     ($self->{type}, $self->{id}, $self->{endpoint}, $self->{data}) =
       split ':', $string, 4;
+
+    return unless defined $self->{type};
 
     if ($self->{id} =~ s/\+$//) {
         # TODO ack
     }
 
     my %swapped = reverse %TYPES;
+    return unless exists $swapped{$self->{type}};
+
     $self->{type} = $swapped{$self->{type}};
 
     for (qw(id endpoint data)) {
@@ -62,7 +69,14 @@ sub parse {
     }
 
     if ($self->{type} eq 'json_message' || $self->{type} eq 'event') {
-        $self->{data} = JSON::decode_json($self->{data});
+        try {
+            $self->{data} = JSON::decode_json($self->{data});
+        }
+        catch {
+            delete $self->{data};
+        };
+
+        return unless defined $self->{data};
     }
     else {
         $self->{data} = Encode::decode('UTF-8', $self->{data});
