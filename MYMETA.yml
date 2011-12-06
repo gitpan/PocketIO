@@ -5,9 +5,9 @@ author:
 build_requires:
   ExtUtils::MakeMaker: 6.62
 configure_requires:
-  ExtUtils::MakeMaker: 0
+  ExtUtils::MakeMaker: 6.62
 dynamic_config: 0
-generated_by: 'ExtUtils::MakeMaker version 6.62, CPAN::Meta::Converter version 2.112621'
+generated_by: 'Module::Install version 1.04, CPAN::Meta::Converter version 2.112621'
 license: artistic_2
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -15,8 +15,10 @@ meta-spec:
 name: PocketIO
 no_index:
   directory:
-    - t
+    - examples
     - inc
+    - t
+    - xt
 requires:
   AnyEvent: 0
   JSON: 0
@@ -26,4 +28,8 @@ requires:
   Try::Tiny: 0
   Twiggy: 0
   perl: 5.008007
+resources:
+  bugtracker: http://github.com/vti/pocketio/issues
+  license: http://dev.perl.org/licenses/
+  repository: http://github.com/vti/pocketio/
 version: 0.00907

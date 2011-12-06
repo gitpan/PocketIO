@@ -72,9 +72,14 @@ sub _dispatch_send {
 
     my $conn = $self->find_connection($id);
 
-    my $data = $self->_get_content;
+    #if ($self->req->param('disconnect')) {
+    #    $conn->close;
+    #}
+    #else {
+        my $data = $self->_get_content;
 
-    $conn->parse_message($data);
+        $conn->parse_message($data);
+    #}
 
     return [200, ['Content-Length' => 1], ['1']];
 }
