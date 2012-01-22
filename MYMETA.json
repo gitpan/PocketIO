@@ -35,12 +35,11 @@
       "runtime" : {
          "requires" : {
             "AnyEvent" : 0,
+            "Carp" : 0,
             "JSON" : 0,
-            "Plack" : 0,
+            "Protocol::SocketIO" : 0,
             "Protocol::WebSocket" : "0.009006",
             "Scalar::Util" : 0,
-            "Try::Tiny" : 0,
-            "Twiggy" : 0,
             "perl" : "5.008007"
          }
       }
@@ -57,5 +56,5 @@
          "url" : "http://github.com/vti/pocketio/"
       }
    },
-   "version" : "0.00907"
+   "version" : "0.00909"
 }

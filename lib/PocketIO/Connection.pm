@@ -5,7 +5,6 @@ use warnings;
 
 use AnyEvent;
 use Scalar::Util qw(blessed);
-use Try::Tiny;
 
 use PocketIO::Message;
 use PocketIO::Socket;
@@ -45,14 +44,15 @@ sub new {
         my $self = shift;
         my @args = @_;
 
-        try {
+        eval {
             $on_connect->($self->{socket}, @args);
+            1;
         }
-        catch {
+        or do {
             warn "Connection error: $_";
 
             $self->close;
-        }
+        };
     };
 
     DEBUG && $self->_debug('Connection created');
@@ -141,7 +141,9 @@ sub disconnected {
             return unless $self;
 
             if ($self->{socket}) {
-                $self->{socket}->emit('disconnect');
+                if (my $cb = $self->{socket}->on('disconnect')) {
+                    $cb->($self->{socket});
+                }
                 undef $self->{socket};
             }
 

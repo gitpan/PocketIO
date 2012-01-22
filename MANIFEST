@@ -38,6 +38,7 @@ lib/PocketIO/Transport/JSONPPolling.pm
 lib/PocketIO/Transport/WebSocket.pm
 lib/PocketIO/Transport/XHRMultipart.pm
 lib/PocketIO/Transport/XHRPolling.pm
+lib/PocketIO/Util.pm
 Makefile.PL
 MANIFEST			This list of files
 MANIFEST.SKIP
@@ -53,7 +54,6 @@ t/conn/reconnect-timeout.t
 t/conn/socket.t
 t/conn/sockets.t
 t/lib/Handler.pm
-t/message.t
 t/pool.t
 t/resource.t
 t/transport/htmlfile.t
