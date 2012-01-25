@@ -26,9 +26,11 @@ requires:
   Protocol::SocketIO: 0
   Protocol::WebSocket: 0.009006
   Scalar::Util: 0
+  Test::More: 0
+  Test::TCP: 0
   perl: 5.008007
 resources:
   bugtracker: http://github.com/vti/pocketio/issues
   license: http://dev.perl.org/licenses/
   repository: http://github.com/vti/pocketio/
-version: 0.10
+version: 0.11
