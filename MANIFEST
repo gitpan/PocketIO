@@ -1,5 +1,6 @@
 Changes
 examples/chat/chat-redis.psgi
+examples/chat/chat-rooms.psgi
 examples/chat/chat.psgi
 examples/chat/public/chat.html
 examples/chat/public/socket.io.js
@@ -28,6 +29,7 @@ lib/PocketIO/Message.pm
 lib/PocketIO/Pool.pm
 lib/PocketIO/Pool/Redis.pm
 lib/PocketIO/Resource.pm
+lib/PocketIO/Room.pm
 lib/PocketIO/Socket.pm
 lib/PocketIO/Sockets.pm
 lib/PocketIO/Test.pm

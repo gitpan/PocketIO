@@ -42,13 +42,11 @@ sub new {
     my $on_connect = delete $self->{on_connect} || sub { };
     $self->{on_connect} = sub {
         my $self = shift;
-        my @args = @_;
 
         eval {
-            $on_connect->($self->{socket}, @args);
+            $on_connect->($self->{socket}, @{$self->{on_connect_args} || []});
             1;
-        }
-        or do {
+        } || do {
             warn "Connection error: $_";
 
             $self->close;
@@ -59,6 +57,13 @@ sub new {
 
     $self->connecting;
 
+    return $self;
+}
+
+sub new_passive {
+    my $class = shift;
+    my $self  = {@_};
+    bless $self, $class;
     return $self;
 }
 
@@ -296,7 +301,7 @@ sub parse_message {
 
                 $self->write($message);
             }
-        );
+        ) if defined $self->{socket}->on($name);
     }
     elsif ($message->type eq 'heartbeat') {
 
@@ -320,7 +325,7 @@ sub write {
 
     $bytes = $bytes->to_bytes if blessed $bytes;
 
-    if ($self->on('write')) {
+    if ($self->{on_write}) {
         DEBUG && $self->_debug("Writing '" . substr($bytes, 0, 50) . "'");
         $self->emit('write', $bytes);
     }
@@ -335,6 +340,7 @@ sub _start_timer {
     my ($timer) = @_;
 
     my $timeout = $self->{"${timer}_timeout"};
+    return if (!defined $timeout);
 
     DEBUG && $self->_debug("Start '${timer}_timer' ($timeout)");
 
@@ -409,7 +415,7 @@ PocketIO::Connection - Connection class
 =head1 DESCRIPTION
 
 L<PocketIO::Connection> is a connection class that
-incapsulates all the logic for bulding and parsing Socket.IO messages. Used
+encapsulates all the logic for bulding and parsing Socket.IO messages. Used
 internally.
 
 =head1 METHODS

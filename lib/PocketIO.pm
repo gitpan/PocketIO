@@ -3,7 +3,7 @@ package PocketIO;
 use strict;
 use warnings;
 
-our $VERSION = '0.13';
+our $VERSION = '0.14';
 
 use overload '&{}' => sub { shift->to_app(@_) }, fallback => 1;
 
@@ -233,7 +233,17 @@ Not implemented yet.
 
 =head2 Rooms
 
-Not implemented yet.
+A room is a named group of connections for more fine-grained
+broadcasts.  You can subscribe or unsubscribe a socket to/from a room:
+
+    sub {
+        my $self = shift;
+
+        $self->join('a room');
+
+        $self->sockets->in('a room')->emit('message', data);
+        $self->broadcast->to('a room')->emit("other message");
+    }
 
 =head1 CONFIGURATIONS
 
@@ -334,6 +344,10 @@ Jens Gassmann
 Uwe Voelker
 
 Oskari Okko Ojala
+
+Jason May
+
+Michael FiG
 
 =head1 AUTHOR
 

@@ -1,10 +1,9 @@
-package PocketIO::Sockets;
+package PocketIO::Room;
 
 use strict;
 use warnings;
 
 use PocketIO::Message;
-use PocketIO::Room;
 
 sub new {
     my $class = shift;
@@ -18,7 +17,11 @@ sub new {
 sub send {
     my $self = shift;
 
-    $self->{pool}->send(@_);
+    $self->{pool}->send_raw(
+        room    => $self->{room},
+        invoker => $self->{conn},
+        message => "$_[0]"
+    );
 
     return $self;
 }
@@ -29,16 +32,13 @@ sub emit {
 
     my $event = $self->_build_event_message($name, @_);
 
-    $self->{pool}->send($event);
+    $self->{pool}->send_raw(
+        room    => $self->{room},
+        invoker => $self->{conn},
+        message => $event
+    );
 
     return $self;
-}
-
-sub in {
-    my $self = shift;
-    my ($room) = @_;
-
-    return PocketIO::Room->new(room => $room, pool => $self->{pool});
 }
 
 sub _build_event_message {
@@ -52,28 +52,3 @@ sub _build_event_message {
 }
 
 1;
-__END__
-
-=head1 NAME
-
-PocketIO::Sockets - Sockets class
-
-=head1 DESCRIPTION
-
-Used to send messages to B<all> clients.
-
-=head1 METHODS
-
-=head2 C<new>
-
-Create new instance.
-
-=head2 C<send>
-
-Send message.
-
-=head2 C<emit>
-
-Emit event.
-
-=cut

@@ -1,9 +1,10 @@
 Revision history for perl module PocketIO
 
-0.13 2012-01-28
+0.14 2012-06-05
 
-- Cleanup test requirements
-- Require new version of Protocol::SocketIO
+ - Fixed exception handling bugs (Jason May)
+ - Provide the status code when throwing a websocket exception (Jason May)
+ - Added room support (Michael FiG)
 
 0.12 2012-01-25
 
