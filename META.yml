@@ -23,7 +23,7 @@ no_index:
 requires:
   AnyEvent: 0
   Carp: 0
-  JSON: 0
+  JSON: 2.53
   Protocol::SocketIO: 0.04
   Protocol::WebSocket: 0.009006
   Scalar::Util: 0
@@ -34,4 +34,4 @@ resources:
   bugtracker: http://github.com/vti/pocketio/issues
   license: http://dev.perl.org/licenses/
   repository: http://github.com/vti/pocketio/
-version: 0.14
+version: 0.15

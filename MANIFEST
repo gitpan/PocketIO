@@ -58,6 +58,7 @@ t/conn/sockets.t
 t/lib/Handler.pm
 t/pool.t
 t/resource.t
+t/room.t
 t/transport/htmlfile.t
 t/transport/jsonp-polling.t
 t/transport/websocket.t
