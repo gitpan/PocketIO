@@ -3,7 +3,7 @@ package PocketIO;
 use strict;
 use warnings;
 
-our $VERSION = '0.15';
+our $VERSION = '0.16';
 
 use overload '&{}' => sub { shift->to_app(@_) }, fallback => 1;
 
@@ -95,7 +95,7 @@ sub _get_handler {
         $class->new;
       };
 
-    return $instance->run;
+    return $instance->$method;
 }
 
 1;
@@ -351,13 +351,17 @@ Michael FiG
 
 Peter Stuifzand
 
+tokubass
+
+mvgrimes
+
 =head1 AUTHOR
 
 Viacheslav Tykhanovskyi, C<vti@cpan.org>.
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright (C) 2011-2012, Viacheslav Tykhanovskyi
+Copyright (C) 2011-2013, Viacheslav Tykhanovskyi
 
 This program is free software, you can redistribute it and/or modify it under
 the terms of the Artistic License version 2.0.
