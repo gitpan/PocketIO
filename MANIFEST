@@ -1,6 +1,9 @@
+Build.PL
 Changes
 LICENSE
 MANIFEST.SKIP
+META.json
+README.md
 cpanfile
 examples/chat/README
 examples/chat/chat-redis.psgi
@@ -33,6 +36,7 @@ lib/PocketIO/Transport/WebSocket.pm
 lib/PocketIO/Transport/XHRMultipart.pm
 lib/PocketIO/Transport/XHRPolling.pm
 lib/PocketIO/Util.pm
+minil.toml
 t/app.t
 t/conn/broadcast.t
 t/conn/close-timeout.t
@@ -52,7 +56,5 @@ t/transport/xhr-polling.t
 xt/changes.t
 xt/pod-coverage.t
 xt/pod.t
-Build.PL
-META.json
 META.yml
 MANIFEST

@@ -13,7 +13,7 @@ license: unknown
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
   version: 1.4
-name: pocketio
+name: PocketIO
 no_index:
   directory:
     - t
@@ -27,7 +27,7 @@ no_index:
 provides:
   PocketIO:
     file: lib/PocketIO.pm
-    version: 0.16
+    version: 0.17
   PocketIO::Broadcast:
     file: lib/PocketIO/Broadcast.pm
   PocketIO::Connection:
@@ -81,7 +81,7 @@ resources:
   bugtracker: https://github.com/vti/pocketio/issues
   homepage: https://github.com/vti/pocketio
   repository: git://github.com/vti/pocketio.git
-version: 0.16
+version: 0.17
 x_contributors:
   - 'Jens Gassmann <jens.gassmann@atomix.de>'
   - 'Audrey Tang <audrey.tang@socialtext.com>'
